@@ -37,4 +37,8 @@
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(OS)' == 'Windows_NT' ">
+    <DefineConstants>Windows</DefineConstants>
+  </PropertyGroup>
+
 </Project>
