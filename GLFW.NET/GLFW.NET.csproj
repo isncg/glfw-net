@@ -3,11 +3,11 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <RootNamespace>GLFW</RootNamespace>
-    <Authors>Eric Freed</Authors>
+    <Authors>isncg</Authors>
     <AssemblyVersion>1.0.1.0</AssemblyVersion>
-    <Description>Complete, cross-platform, managed wrapper around the GLFW library for creating native windows with an OpenGL context.</Description>
-    <RepositoryUrl>https://github.com/ForeverZer0/glfw-net</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/ForeverZer0/glfw-net</PackageProjectUrl>
+    <Description>Forked form https://github.com/ForeverZer0/glfw-net. Complete, cross-platform, managed wrapper around the GLFW library for creating native windows with an OpenGL context.</Description>
+    <RepositoryUrl>https://github.com/isncg/glfw-net</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/isncg/glfw-net</PackageProjectUrl>
     <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
     <PackageReleaseNotes>- Implemented new GLFW 3.3 features
 - Large refactorings
@@ -21,7 +21,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <PackageVersion>3.3.1</PackageVersion>
     <Title>glfw-net</Title>
-    <PackageIconUrl>https://github.com/ForeverZer0/glfw-net/raw/master/favicons.png</PackageIconUrl>
+    <PackageIconUrl>https://github.com/isncg/glfw-net/raw/master/favicons.png</PackageIconUrl>
     <PackageId>isncg.glfw.net</PackageId>
     <AssemblyName>$(MSBuildProjectName)</AssemblyName>
   </PropertyGroup>
