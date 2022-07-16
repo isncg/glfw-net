@@ -22,7 +22,8 @@
     <PackageVersion>3.3.1</PackageVersion>
     <Title>glfw-net</Title>
     <PackageIconUrl>https://github.com/ForeverZer0/glfw-net/raw/master/favicons.png</PackageIconUrl>
-    <PackageId>glfw-net</PackageId>
+    <PackageId>isncg.glfw.net</PackageId>
+    <AssemblyName>$(MSBuildProjectName)</AssemblyName>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
