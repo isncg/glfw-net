@@ -3,6 +3,8 @@ using System.Runtime.InteropServices;
 using System.Security;
 using System.Text;
 using JetBrains.Annotations;
+using System.Reflection;
+using System.Runtime.InteropServices;
 
 #pragma warning disable 0419
 
@@ -21,13 +23,25 @@ namespace GLFW
         ///     The native library name,
         ///     <para>For Unix users using an installed version of GLFW, this needs refactored to <c>glfw</c>.</para>
         /// </summary>
-#if Windows
-        public const string LIBRARY = "glfw3";
-#elif OSX
-        public const string LIBRARY = "libglfw.3"; // mac
-#else
         public const string LIBRARY = "glfw";
-#endif
+
+        private static IntPtr ImportResolverWin32(string libraryName, Assembly assembly, DllImportSearchPath? searchPath)
+        {
+            if (libraryName == LIBRARY)
+            {
+                return NativeLibrary.Load("glfw3", assembly, searchPath);
+            }
+            return IntPtr.Zero;
+        }
+
+        private static IntPtr ImportResolverMacOSX(string libraryName, Assembly assembly, DllImportSearchPath? searchPath)
+        {
+            if (libraryName == LIBRARY)
+            {
+                return NativeLibrary.Load("libglfw.3", assembly, searchPath);
+            }
+            return IntPtr.Zero;
+        }
 
         private static readonly ErrorCallback errorCallback = GlfwError;
 
@@ -37,6 +51,12 @@ namespace GLFW
 
         static Glfw()
         {
+            Console.Write("Glfw init. Platform = ");
+            Console.WriteLine(System.Environment.OSVersion.Platform);
+            if (System.Environment.OSVersion.Platform == PlatformID.Win32NT)
+                NativeLibrary.SetDllImportResolver(typeof(Glfw).Assembly, ImportResolverWin32);
+            else if (System.Environment.OSVersion.Platform == PlatformID.MacOSX)
+                NativeLibrary.SetDllImportResolver(typeof(Glfw).Assembly, ImportResolverMacOSX);
             Init();
             SetErrorCallback(errorCallback);
         }
